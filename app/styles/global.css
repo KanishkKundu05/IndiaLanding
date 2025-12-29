@@ -463,10 +463,12 @@ body {
   }
 
   .splash-hero-text {
-    margin-top: 1rem; }
+    margin-top: 1rem;
+  }
 
   .splash-section .splash-hero-text h1 {
-    font-size: 5rem !important;
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
   }
 
   .scroll-explore {
@@ -476,5 +478,27 @@ body {
 
   .scroll-explore-text {
     font-size: 0.875rem;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+  .splash-section .splash-hero-text h1 {
+    font-size: 1.5rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .splash-text-left,
+  .splash-text-center,
+  .splash-text-right {
+    font-size: 0.7rem;
+  }
+
+  .splash-text-left {
+    margin-left: 0.5rem;
+  }
+
+  .splash-text-right {
+    margin-right: 0.5rem;
   }
 }
