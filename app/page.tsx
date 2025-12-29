@@ -7,6 +7,7 @@ import ScrollSlideUp from "./components/ScrollSlideUp";
 
 export default function Home() {
   const [showScrollExplore, setShowScrollExplore] = useState(false);
+  const [navOnWhite, setNavOnWhite] = useState(false);
   const splashSectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -23,6 +24,14 @@ export default function Home() {
       } else {
         setShowScrollExplore(false);
       }
+
+      // Check if navbar is over the white section (navbar is ~80px from top)
+      const navbarBottom = 80;
+      if (rect.top <= navbarBottom) {
+        setNavOnWhite(true);
+      } else {
+        setNavOnWhite(false);
+      }
     };
 
     handleScroll();
@@ -33,7 +42,7 @@ export default function Home() {
   return (
     <>
       {/* Navbar */}
-      <nav className="navbar">
+      <nav className={`navbar ${navOnWhite ? 'nav-on-white' : ''}`}>
         <div className="navbar-container">
           <div className="navbar-left">
             <a href="/" className="navbar-brand">

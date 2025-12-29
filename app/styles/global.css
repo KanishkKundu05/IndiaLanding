@@ -56,11 +56,27 @@ body {
 
 .brand-icon {
   color: #fff;
+  transition: color 0.3s ease;
 }
 
 .brand-text {
   font-size: 1.25rem;
   font-weight: 600;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+/* Navbar on white background */
+.nav-on-white .brand-text {
+  color: #000;
+}
+
+.nav-on-white .brand-icon {
+  color: #000;
+}
+
+.nav-on-white .btn-get-started {
+  background: #1F2124;
   color: #fff;
 }
 
@@ -74,18 +90,16 @@ body {
   padding: 0.625rem 1.5rem;
   font-size: 0.95rem;
   font-weight: 600;
-  color: #000;
-  background: rgba(255, 255, 255, 0.95);
-  border: none;
+  color: white;
+  background: #1F2124;
+  border: 1px solid white;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .btn-get-started:hover {
-  background: #fff;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: transparent;
 }
 
 .icon-group {
@@ -225,7 +239,7 @@ body {
 
 /* Partners Section */
 .partners {
-  margin-top: 7%;
+  margin-top: 7.5%;
   padding-bottom: 10%;
 }
 
