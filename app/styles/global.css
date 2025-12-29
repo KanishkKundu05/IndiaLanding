@@ -1,0 +1,466 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  color: #fff;
+  background: #0a0a0a;
+  min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  max-width: 1800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #fff;
+}
+
+.brand-icon {
+  color: #fff;
+}
+
+.brand-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-get-started {
+  padding: 0.625rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #000;
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-get-started:hover {
+  background: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.icon-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.icon-separator {
+  width: 1px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.navbar-logo a {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: opacity 0.2s ease;
+}
+
+.navbar-logo a:hover {
+  opacity: 0.8;
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-link {
+  display: inline-block;
+  padding: 0.625rem 1.25rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.navbar-link:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.navbar-link.active {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+.navbar-cta {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-button {
+  padding: 0.625rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #000;
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.navbar-button:hover {
+  background: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Hero - 80% of viewport */
+.hero {
+  width: 100%;
+  height: 80vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-image {
+  z-index: -1;
+}
+
+/* Hero Text Section */
+.hero-text {
+  text-align: left;
+  padding-left: clamp(1.5rem, 6.5vw, 10%);
+  padding-top: 2%;
+  background: #212426;
+}
+
+.hero-title {
+  font-family: "Alliance No.2", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 8.5rem;
+  font-weight: 500;
+  margin-bottom: 0.35rem;
+  color: #fff;
+  line-height: 1;
+}
+
+.hero-subtitle {
+  font-family: "Alliance No.2", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 3rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  color: #B8B8B8;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+/* Partners Section */
+.partners {
+  margin-top: 7%;
+  padding-bottom: 10%;
+}
+
+.partners-title {
+  font-family: "Alliance No.2", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 3rem;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  text-align: left;
+  margin-bottom: 7rem;
+}
+
+/* Logo Carousel */
+.partners-carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-top: 2rem;
+}
+
+
+.carousel-track {
+  display: flex;
+  gap: 4rem;
+  animation: scroll 80s linear infinite;
+  width: max-content;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.logo-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-item img {
+  filter: brightness(0) invert(1);
+  object-fit: contain;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* Splash Section */
+.splash-section {
+  background: #ffffff;
+  padding-top: 4%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 4%;
+  min-height: 95vh;
+}
+
+.next-section {
+  background: #f5f5f5;
+  min-height: 100vh;
+  padding: 4% 2%;
+}
+
+.splash-divider {
+  width: 100%;
+  height: 1px;
+  background: #000000;
+}
+
+.splash-text-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.splash-text-left,
+.splash-text-center,
+.splash-text-right {
+  font-family: "Alliance No.2", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #000000;
+}
+
+.splash-text-left {
+  text-align: left;
+  margin-left: 1rem;
+}
+
+.splash-text-center {
+  text-align: center;
+}
+
+.splash-text-right {
+  text-align: right;
+  margin-right: 1rem;
+}
+
+.splash-hero-text {
+  margin-top: 8rem;
+  text-align: center;
+}
+.splash-hero-text h1 {
+  font-family: "Alliance No.2", -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 6rem !important;
+  font-weight: 400 !important;
+  color: #000000 !important;
+  line-height: 1.15 !important;
+  margin: 0 !important;
+}
+
+.splash-hero-text em {
+  font-style: italic;
+}
+
+.splash-gray {
+  color: #6b6b6b;
+}
+
+/* Scroll Explore */
+.scroll-explore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 11rem;
+  gap: 1rem;
+}
+
+.scroll-explore-text {
+  font-family: "Alliance No.2", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #000000;
+}
+
+.scroll-explore-icon {
+  color: #000000;
+}
+
+.scroll-dot {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(12px);
+    opacity: 0.3;
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .navbar {
+    width: 92%;
+    top: 0.5rem;
+    padding: 0.875rem 1rem;
+  }
+
+  .navbar-menu {
+    display: none;
+  }
+
+  .navbar-logo a {
+    font-size: 1.5rem;
+  }
+
+  .navbar-button,
+  .btn-get-started {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .hero-text {
+    padding-left: clamp(1rem, 3vw, 4%);
+  }
+
+  .partners {
+    margin-top: 8%;
+    padding-bottom: 4%;
+  }
+
+  .partners-title {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .carousel-track {
+    gap: 2rem;
+  }
+
+  .splash-section {
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+
+  .splash-text-left,
+  .splash-text-center,
+  .splash-text-right {
+    font-size: 0.875rem;
+  }
+
+  .splash-hero-text {
+    margin-top: 1rem; }
+
+  .splash-section .splash-hero-text h1 {
+    font-size: 5rem !important;
+  }
+
+  .scroll-explore {
+    margin-top: 4rem;
+    gap: 1rem;
+  }
+
+  .scroll-explore-text {
+    font-size: 0.875rem;
+  }
+}
