@@ -8,11 +8,14 @@ import ScrollSlideUp from "./components/ScrollSlideUp";
 export default function Home() {
   const [showScrollExplore, setShowScrollExplore] = useState(false);
   const [navOnWhite, setNavOnWhite] = useState(false);
+  const [clipPercent, setClipPercent] = useState(0);
   const splashSectionRef = useRef<HTMLElement>(null);
+  const brandRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       const element = splashSectionRef.current;
+      const brandElement = brandRef.current;
       if (!element) return;
 
       const rect = element.getBoundingClientRect();
@@ -32,6 +35,27 @@ export default function Home() {
       } else {
         setNavOnWhite(false);
       }
+
+      // Calculate clip percentage for the brand element
+      if (brandElement) {
+        const brandRect = brandElement.getBoundingClientRect();
+        const whiteTop = rect.top;
+
+        // Calculate how much of the brand is over the white section
+        if (whiteTop >= brandRect.bottom) {
+          // White section is completely below the brand
+          setClipPercent(0);
+        } else if (whiteTop <= brandRect.top) {
+          // White section is completely above the brand (brand fully on white)
+          setClipPercent(100);
+        } else {
+          // White section is partially intersecting the brand
+          const brandHeight = brandRect.bottom - brandRect.top;
+          const overlapFromBottom = brandRect.bottom - whiteTop;
+          const percent = (overlapFromBottom / brandHeight) * 100;
+          setClipPercent(Math.min(100, Math.max(0, percent)));
+        }
+      }
     };
 
     handleScroll();
@@ -45,44 +69,58 @@ export default function Home() {
       <nav className={`navbar ${navOnWhite ? 'nav-on-white' : ''}`}>
         <div className="navbar-container">
           <div className="navbar-left">
-            <a href="/" className="navbar-brand">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="brand-icon"
+            <a href="/" className="navbar-brand" ref={brandRef}>
+              {/* White version (for dark background) - clips from bottom */}
+              <div
+                className="brand-layer brand-white"
+                style={{
+                  clipPath: `inset(0 0 ${clipPercent}% 0)`,
+                }}
               >
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 16v-4" />
-                <path d="M12 8h.01" />
-              </svg>
-              <span className="brand-text">Sentry</span>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 16v-4" />
+                  <path d="M12 8h.01" />
+                </svg>
+                <span>Sentry</span>
+              </div>
+              {/* Black version (for white background) - clips from top */}
+              <div
+                className="brand-layer brand-black"
+                style={{
+                  clipPath: `inset(${100 - clipPercent}% 0 0 0)`,
+                }}
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 16v-4" />
+                  <path d="M12 8h.01" />
+                </svg>
+                <span>Sentry</span>
+              </div>
             </a>
           </div>
 
           <div className="navbar-right">
             <button className="btn-get-started">Get Started</button>
-            <div className="icon-group">
-              <button className="icon-btn" aria-label="Search">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="11" cy="11" r="8" />
-                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                </svg>
-              </button>
-              <div className="icon-separator"></div>
-              <button className="icon-btn" aria-label="Menu">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="3" y1="12" x2="21" y2="12" />
-                  <line x1="3" y1="6" x2="21" y2="6" />
-                  <line x1="3" y1="18" x2="21" y2="18" />
-                </svg>
-              </button>
-            </div>
           </div>
         </div>
       </nav>
@@ -100,7 +138,7 @@ export default function Home() {
       </section>
       <section className="hero-text">
         <h1 className="hero-title">Warp Speed</h1>
-        <p className="hero-subtitle">The Manufacturing OS for </p>
+        <p className="hero-subtitle">The Manufacturing&nbsp;OS for </p>
         <p className="hero-subtitle">Indian Industrialization</p>
 
         {/* Partners */}
@@ -188,7 +226,7 @@ export default function Home() {
         </FadeInSection>
         <div className="splash-hero-text" style={{paddingTop: '6rem'}}>
           <ScrollSlideUp>
-            <h1>Warp Speed is the manufacturing OS</h1>
+            <h1>Warp Speed is the manufacturing&nbsp;OS</h1>
             <h1>that <span className="splash-gray"> adapts to your business</span></h1>
             <h1>—not the other way around</h1>
           </ScrollSlideUp>

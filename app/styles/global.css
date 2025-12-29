@@ -52,8 +52,41 @@ body {
   gap: 0.5rem;
   text-decoration: none;
   color: #fff;
+  position: relative;
 }
 
+/* Brand layer styling for split effect */
+.brand-layer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand-layer span {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.brand-white {
+  color: #fff;
+}
+
+.brand-white svg {
+  stroke: #fff;
+}
+
+.brand-black {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #000;
+}
+
+.brand-black svg {
+  stroke: #000;
+}
+
+/* Legacy styles - kept for compatibility */
 .brand-icon {
   color: #fff;
   transition: color 0.3s ease;
@@ -64,15 +97,6 @@ body {
   font-weight: 600;
   color: white;
   transition: color 0.3s ease;
-}
-
-/* Navbar on white background */
-.nav-on-white .brand-text {
-  color: #000;
-}
-
-.nav-on-white .brand-icon {
-  color: #000;
 }
 
 .nav-on-white .btn-get-started {
@@ -87,15 +111,16 @@ body {
 }
 
 .btn-get-started {
-  padding: 0.625rem 1.5rem;
+  padding: 0.625rem 1.95rem;
   font-size: 0.95rem;
   font-weight: 600;
   color: white;
   background: #1F2124;
   border: 1px solid white;
-  border-radius: 8px;
+  border-radius: 0;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-align: center;
 }
 
 .btn-get-started:hover {
@@ -421,7 +446,7 @@ body {
 
   .navbar-button,
   .btn-get-started {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.3rem;
     font-size: 0.875rem;
   }
 
